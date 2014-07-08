@@ -13,7 +13,7 @@
  */
 	define('CORE_DOMAIN','http://Xengine.com');
 	set_time_limit(360);
-	class xUpdate extends Xengine{
+	class xNexus extends Xengine{
 
 		function dbSync(){
 			$table['RemoteDomains']['domain']['Type'] 		= 'varchar(256)';
@@ -956,99 +956,5 @@
 	        return $result;
 	    }
 	}
-	
-	/*
-	 * This class checks against the database for any updates it should preform.
-	 */
-	class updateSql extends xUpdate{
-		var $updates;	// Array full of update data.
-		function runCheck(){
-			//$this->update0001(false);
-			$this->update0002(false);
-			$this->update0003(false);
-			$this->update0004(false);
-			$this->updateOptIn0001(false);
-			return $this->updates;
-		}
-
-
-
-		/*
-		 * Turns `users` table to `Users`
-		 */
-		function update0001($sync){
-			if(!$sync){
-				$table = $this->q()->Q('show tables like "users"');
-				if(!empty($table)){
-					$this->updates['update0001'] = 'Updates Users Table';
-				}
-				return false;
-			}else{
-				$this->q()->Q('ALTER TABLE users RENAME TO Users');
-				$this->set('message',$this->q()->error);
-			}
-		}
-
-		/*
-		 * adds `first_name` `last_name` `newsletter` colums to `Users`
-		 */
-		function update0002($sync){
-			// taken out!
-		}
-
-		/*
-		 * adds `email` `last_name` `newsletter` colums to `Users`
-		 */
-		function update0003($sync){
-			if(!$sync){
-				$table = $this->q()->Select('email','Users');
-				if(empty($table)){
-					$this->updates['update0003'] = 'Add Users Email ';
-				}
-				return false;
-			}else{
-				$q = $this->q();
-				$q->Q("ALTER TABLE `Users` ADD (
-					`email` varchar(75))
-				");
-				$this->set('message',$q->error);
-				//header('Location: /@/update/updateXCore');
-			}
-		}
-
-		function update0004($sync){
-			$q = $this->q();
-			if(!$sync){
-				$q->setStartLimit(0,1);
-				$table = $q->Select('*','costumez');
-				if(isset($table[0]['table'])){
-					$this->updates['update0004'] = 'Update Costume Table';
-				}
-				return false;
-			}else{
-				$q->Q('ALTER TABLE costumez CHANGE `table` table_name varchar(255)');
-				$this->set('message',$q->error);
-				$_SESSION['runUpdate']['xphp'] = array('xLayout.php','xUpdate.php');
-			}
-		}
-
-		function updateOptIn0001($sync){
-			$q = $this->q();
-			if(!$sync){
-				$q->setStartLimit(0,1);
-				$table = $q->Q('show tables like "OptInPages"');
-				if(!empty($table)){
-					$d = $q->Select('thank_you','OptInPages');
-
-					if( $q->error ){
-						$this->updates['updateOptIn0001'] = 'Adds Thank You Table';
-						return false;
-					}
-				}
-			}else{
-				$q->Q("ALTER TABLE `OptInPages` ADD ( `thank_you` blob ) ");
-				$this->set('message',$q->mSql.$q->error);
-			}
-		}
-	}
+	 
 ?>
