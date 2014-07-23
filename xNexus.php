@@ -186,17 +186,25 @@
 				$info = $_SESSION['nexus']['update'];
 			}else{ 
 				foreach ($this->_xtras as $xtra => $x) {
-					$tokens= token_get_all(file_get_contents("https://raw.githubusercontent.com/SuperDomX/$x[class]/master/$x[class].php"));
+					$f = "https://raw.githubusercontent.com/SuperDomX/$x[class]/master/$x[class].php";
+					$tokens = token_get_all( file_get_contents($f) );
+					
+					  
+					
+					//$tokens= token_get_all($f );
 					$comments = array();
 					foreach($tokens as $token) {
 					    if($token[0] == T_COMMENT || $token[0] == T_DOC_COMMENT) {
 					        $comments[] = $token[1];
 					    }
 					}
+					
+					
 					// print_r($comments);
 
 					$i = $this->readPhpComment($comments[0]);
- 
+  
+					
 					$jig = array(
 						'author'  => '',
 						'class'   => $x['class'],
@@ -211,7 +219,8 @@
 					$info["$x[class].php"] = array_merge($jig,$i);
 
 					$_SESSION['nexus']['update']["$x[class].php"] = $info["$x[class].php"];
-
+ 
+					
 				}
 
 			}
@@ -227,17 +236,15 @@
 		function git($update=null)
 		{
 			 
-			if($update){
-				$this->set('update',$update);
-
+			$this->set('update',$update); 
 				$sys = array(
 					'backdoor' => $this->_CFG['dir']['backdoor'],
 					'suite' => $this->_CFG['suite'] 
 				);
 
-				$this->set('system',$this->mysys("cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; git pull origin master -f",true));
+				$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; git pull origin master -f)2>&1");
 				 
-			}
+				$this->set('system',$s); 
 		}
 
 		function _OLD_index(){
