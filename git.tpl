@@ -4,10 +4,9 @@
 			<div class="jumbotron">	
 				<h1>
 					
-					Updated.  
+					Updated {$updated}
 				</h1>
-				{$system}
-
+				<h3><i class="fa fa-terminal fa-3x"></i> {$system}</h3>
 			</div>
 		</section>
 	</div>
