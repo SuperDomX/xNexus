@@ -1,14 +1,16 @@
 <?php
 /**
  * @name neXus
- * @desc Sleep easy   by keeping your Domain updated with stable nightly builds
- * @version v1.11.10.22.00.28
+ * @desc The Central Hub where All Super Domains Connect & Communicate
+ * @version v2.0.0
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
  * @see  support
- * @link update
+ * @link nexus
+ * @release beta
  * @todo
+ * @alpha true
  * @license
  */
 	define('CORE_DOMAIN','http://Xengine.com');
@@ -163,6 +165,78 @@
 		}
 
 		function index(){
+			
+			// var_dump($info);
+
+			// // var_dump($t);
+			// exit;
+		}
+
+		// Out puts the list of Xtra's & The Comparing version file.
+		function xtras($reset=false)
+		{
+
+			if($reset){
+				unset($_SESSION['nexus']);
+			}
+
+			$info = array();
+
+			if( isset($_SESSION['nexus']) ){
+				$info = $_SESSION['nexus']['update'];
+			}else{ 
+				foreach ($this->_xtras as $xtra => $x) {
+					$tokens= token_get_all(file_get_contents("https://raw.githubusercontent.com/SuperDomX/$x[class]/master/$x[class].php"));
+					$comments = array();
+					foreach($tokens as $token) {
+					    if($token[0] == T_COMMENT || $token[0] == T_DOC_COMMENT) {
+					        $comments[] = $token[1];
+					    }
+					}
+					// print_r($comments);
+
+					$i = $_SESSION['nexus']['update']["$x[class].php"] = $this->readPhpComment($comments[0]);
+ 
+					$jig = array(
+						'author'  => '',
+						'class'   => $x['class'],
+						'file'    => $x['class'].'php',
+						'icon'    => '',
+						'link'    => '',
+						'mini'    => '',
+						'name'    => '',
+						'version' => 0
+					); 
+
+					$info["$x[class].php"] = array_merge($jig,$i);
+
+				}
+
+			}
+
+			$this->set('master_xtras',$info);
+
+			return $info;
+
+		}
+
+		 
+
+		function git($update=null)
+		{
+			 
+			if($update){
+				$sys = array(
+					'backdoor' => $this->_CFG['dir']['backdoor'],
+					'suite' => $this->_CFG['suite'] 
+				);
+
+				$this->set('system',$this->mysys("cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; git pull origin master -f",true));
+				 
+			}
+		}
+
+		function _OLD_index(){
 			//$xphp = $this->getXTends();
 			
 			function mkParents($dir,$directory){
