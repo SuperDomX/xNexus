@@ -4,7 +4,7 @@
 			<div class="jumbotron">	
 				<h1>
 					
-					Updated {$updated}
+					Updated {$update}
 				</h1>
 				<h3><i class="fa fa-terminal fa-3x"></i> {$system}</h3>
 			</div>
