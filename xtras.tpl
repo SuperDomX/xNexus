@@ -11,7 +11,7 @@
 
         {assign var=master value=$master_xtras["$xtra"]}
 
-        <a href="/{$toBackDoor}/{$Xtra}/git/{$master.class}/" class="list-group-item  {if $master.version == $x.version}hidden{/if} "> 
+        <a href="/{$toBackDoor}/{$Xtra}/git/{$master.class}/" class="list-group-item  {if $master.version == $x.version}{/if} "> 
         {if $master_xtras["$xtra"].version == $x.version}
             <i class="fa fa-check text-success pull-right"></i> 
         {else}
