@@ -165,6 +165,92 @@
 		}
 
 		function index(){
+			
+			// var_dump($info);
+
+			// // var_dump($t);
+			// exit;
+		}
+
+		// Out puts the list of Xtra's & The Comparing version file.
+		function xtras($reset=false)
+		{
+
+			if($reset){
+				unset($_SESSION['nexus']);
+			}
+
+			$info = array();
+
+			if( isset($_SESSION['nexus']) ){
+				$info = $_SESSION['nexus']['update'];
+			}else{ 
+				foreach ($this->_xtras as $xtra => $x) {
+					$tokens= token_get_all(file_get_contents("https://raw.githubusercontent.com/SuperDomX/$x[class]/master/$x[class].php"));
+					$comments = array();
+					foreach($tokens as $token) {
+					    if($token[0] == T_COMMENT || $token[0] == T_DOC_COMMENT) {
+					        $comments[] = $token[1];
+					    }
+					}
+					// print_r($comments);
+
+<<<<<<< HEAD
+					$i = $this->readPhpComment($comments[0]);
+=======
+					$i = $_SESSION['nexus']['update']["$x[class].php"] = $this->readPhpComment($comments[0]);
+>>>>>>> 6a1dfa1405630156c55e8e90da4ae9dd004030f4
+ 
+					$jig = array(
+						'author'  => '',
+						'class'   => $x['class'],
+						'file'    => $x['class'].'php',
+						'icon'    => '',
+						'link'    => '',
+						'mini'    => '',
+						'name'    => '',
+						'version' => 0
+					); 
+
+					$info["$x[class].php"] = array_merge($jig,$i);
+
+<<<<<<< HEAD
+					$_SESSION['nexus']['update']["$x[class].php"] = $info["$x[class].php"];
+
+=======
+>>>>>>> 6a1dfa1405630156c55e8e90da4ae9dd004030f4
+				}
+
+			}
+
+			$this->set('master_xtras',$info);
+
+			return $info;
+
+		}
+
+		 
+
+		function git($update=null)
+		{
+			 
+			if($update){
+<<<<<<< HEAD
+				$this->set('update',$update);
+
+=======
+>>>>>>> 6a1dfa1405630156c55e8e90da4ae9dd004030f4
+				$sys = array(
+					'backdoor' => $this->_CFG['dir']['backdoor'],
+					'suite' => $this->_CFG['suite'] 
+				);
+
+				$this->set('system',$this->mysys("cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; git pull origin master -f",true));
+				 
+			}
+		}
+
+		function _OLD_index(){
 			//$xphp = $this->getXTends();
 			
 			function mkParents($dir,$directory){
