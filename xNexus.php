@@ -242,7 +242,7 @@
 					'suite' => $this->_CFG['suite'] 
 				);
 
-				$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; git pull origin master -f)2>&1");
+				$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; HOME='' git pull origin master -f)2>&1");
 				 
 				$this->set('system',$s); 
 		}
