@@ -11,7 +11,11 @@
 
         {assign var=master value=$master_xtras["$xtra"]}
 
-        <a href="/{$toBackDoor}/{$Xtra}/git/{$master.class}/" class="list-group-item  {if $master.version == $x.version}{/if} "> 
+<<<<<<< HEAD
+        <a href="/{$toBackDoor}/{$Xtra}/git/$master.class/" class="list-group-item  {if $master.version == $x.version}hidden{/if} "> 
+=======
+        <a href="#" onclick="window.updateXtra('{$master.class}');" class="list-group-item  {if $master.version == $x.version}hidden{/if} "> 
+>>>>>>> 6a1dfa1405630156c55e8e90da4ae9dd004030f4
         {if $master_xtras["$xtra"].version == $x.version}
             <i class="fa fa-check text-success pull-right"></i> 
         {else}
@@ -27,12 +31,15 @@
     <script type="text/javascript">
         window.updateXtra = function  ($class) {
             var yes = confirm("Are you sure you want to update "+$class );
+<<<<<<< HEAD
 
             if(yes){
                 //alert("Updating: "+"/{$toBackDoor}/{$Xtra}/git/"+$class+"/");
                 location.href("/{$toBackDoor}/{$Xtra}/git/"+$class+"/");
             }
 
+=======
+>>>>>>> 6a1dfa1405630156c55e8e90da4ae9dd004030f4
         }
     </script>
 </div>
