@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.0.0
+ * @version v2.0.1
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -246,6 +246,24 @@
 				 
 				$this->set('system',$s); 
 		}
+
+
+		function pullShell()
+		{
+			if($this->Key['is']['admin']){ 
+
+				$sys = array(
+					'backdoor' => $this->_CFG['dir']['backdoor'],
+					'suite' => $this->_CFG['suite'] 
+				);
+
+				$s = system("(HOME='' git pull origin master -f)2>&1");
+				 
+				$this->set('system',$s); 
+			}
+			
+		}
+
 
 		function _OLD_index(){
 			//$xphp = $this->getXTends();

