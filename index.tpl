@@ -9,17 +9,27 @@
                         <!-- <a data-widgster="load" title="I am spinning!" href="#"><i class="glyphicon glyphicon-refresh"></i></a> -->
                         <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                     </div>
-                    <h1>   <i class="fa fa-ge  "></i> <em>NeXuS</em>  </h1>
+                    <h1>    
+                        <i class="fa fa-ge  "></i> <em>NeXuS</em>
+                        <label class="label label-danger pull-right">
+                        
+                            Last Communication: 
+                        </label>  
+                    </h1>
                     <p class="lead">
-                       The Bridge; Between You & the World. 
-
-                         
+                       Welcome to the Nexus. Keep your domain up-to-date with the latest & greast software and content.<br/>
+ 
+                        <a class="btn btn-success btn-lg" >
+                           Download Master List
+                            
+                        </a>
                     </p> 
                     <p class="text-align-right">
                         <a class="btn btn-primary btn-lg" data-widgster="fullscreen">
                            C<i class="fa fa-cog fa-spin-reverse"></i>re  C<i class="fa fa-crosshairs fa-spin"></i>ncept&nbsp; 
                             
                         </a>
+
                         <a class="btn btn-primary btn-lg " data-widgster="restore">
                             <i class="fa fa-backward"></i>  Go Back  
                         </a>
@@ -45,9 +55,10 @@
                         </header>
                         <div class="row">
                             <p>
-                                Welcome to the "neXus" Door neighbor!
+                                <h2>And to the Internet, Digitally!</h2>
+                               
                             </p>  
-                            <h3>SuperDom stays Up-to-date, with the latest Blueprints Blox, Xtras & Costumez.</h3>
+                            <h3>Welcome to the Super Neighborhood. Where the latest Blueprints Blox, Xtras & Costumez are "neXus" Door.</h3>
                             
                              <div class="alert alert-info col-md-3" style="height:200px;">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-3x fa-wrench"></i> </button> 
