@@ -164,8 +164,9 @@
 			return $remote;
 		}
 
-		function index(){
-			
+		function index($download=null){
+			if($download=='master')
+				unset($_SESSION['nexus']);
 			// var_dump($info);
 
 			// // var_dump($t);

@@ -19,7 +19,7 @@
                     <p class="lead">
                        Welcome to the Nexus. Keep your domain up-to-date with the latest & greast software and content.<br/>
  
-                        <a class="btn btn-success btn-lg" >
+                        <a href="/{$toBackDoor}/{$Xtra}/{$method}/master" class="btn btn-success btn-lg" >
                            Download Master List
                             
                         </a>
