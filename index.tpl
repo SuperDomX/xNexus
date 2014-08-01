@@ -27,14 +27,14 @@
                         <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger btn-lg" >
                            Update Shell
                         </a>
-
+<!-- 
                         <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger btn-lg" >
                            Update Suite
                         </a>
 
                         <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger btn-lg" >
                            Update Library
-                        </a>
+                        </a> -->
                     </p> 
                     <p class="text-align-right">
                         <a class="btn btn-primary btn-lg" data-widgster="fullscreen">
@@ -119,7 +119,12 @@
             </div>
         </section>
     </div> 
-    {include file="~widgets/col.tpl" col=6 method="xtras" title="Xtras"}
+
+    
+    {include file="~widgets/col.tpl" col=3 method="blox" title="Blox"}
+    {include file="~widgets/col.tpl" col=3 method="blueprints" title="Blueprints"}
+    {include file="~widgets/col.tpl" col=3 method="costumez" title="Costumez"}
+    {include file="~widgets/col.tpl" col=3 method="xtras" title="Xtras"}    
  
 </div>
 <script type="text/javascript" src="/x/html/layout/watchtower/js/grid-live.js"> </script>
