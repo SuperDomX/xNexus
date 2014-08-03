@@ -270,7 +270,7 @@
 			);
 			switch ($update) {
 			 	case 'submodule':
-			 		$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; HOME='' git submodule add https://github.com/superdomx/$sub -f)2>&1");
+			 		$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; HOME='' git submodule add https://github.com/superdomx/$sub ./$sub)2>&1");
 		 		break;
 			 	
 			 	default:
