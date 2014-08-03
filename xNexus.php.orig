@@ -2,18 +2,17 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.0.0
+ * @version v2.1.0
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
  * @see  support
  * @link nexus
- * @release beta
+ * @release delta
  * @todo
- * @alpha true
+ * @delta true
  * @license
  */
-	define('CORE_DOMAIN','http://Xengine.com');
 	set_time_limit(360);
 	class xNexus extends Xengine{
 
@@ -26,6 +25,11 @@
 			$table['config']['config_value']['Type'] 		='varchar(255)';
 
 			return $table;
+		}
+
+		function autoRun()
+		{
+			
 		}
 
 		/*function autoRun($sDom){
@@ -80,9 +84,36 @@
 			return file_get_contents( CORE_DOMAIN."/update/$function/?returnJson&key=$key");
 		}
 
-		function install(){
-			$this->index();
+		function install($what=null){
+			// $this->index();
+
+
+
+			switch ($what) {
+				case 'blox':
+					# code...
+			
+				break; 
+
+				case 'xtras': 
+					return array(
+						'data' => array(
+							'master_xtras' => $this->getXtras() 
+						)
+					);
+				break;
+				
+				default:
+				# code... 
+					$remote = $this->_SET['CONFIG']['super_nexus'].'/'.$this->_SET['action'].'/'.$this->_SET['method'].'/xtras/.json';
+					$json = file_get_contents($remote);
+					$json = json_decode($json, true); 
+					$this->set('remote_xtras', $json['data']['master_xtras'] );  
+				break;
+			}
 		}
+
+
 
 		function syncDb(){
 			$this->syncDbTables();
@@ -164,12 +195,10 @@
 			return $remote;
 		}
 
-		function index(){
-			
-			// var_dump($info);
-
-			// // var_dump($t);
-			// exit;
+<<<<<<< HEAD
+		function index($download=null){
+			if($download=='master')
+				unset($_SESSION['nexus']); 
 		}
 
 		// Out puts the list of Xtra's & The Comparing version file.
@@ -186,21 +215,25 @@
 				$info = $_SESSION['nexus']['update'];
 			}else{ 
 				foreach ($this->_xtras as $xtra => $x) {
-					$tokens= token_get_all(file_get_contents("https://raw.githubusercontent.com/SuperDomX/$x[class]/master/$x[class].php"));
+					$f = "https://raw.githubusercontent.com/SuperDomX/$x[class]/master/$x[class].php";
+					$tokens = token_get_all( file_get_contents($f) );
+					
+					  
+					
+					//$tokens= token_get_all($f );
 					$comments = array();
 					foreach($tokens as $token) {
 					    if($token[0] == T_COMMENT || $token[0] == T_DOC_COMMENT) {
 					        $comments[] = $token[1];
 					    }
 					}
+					
+					
 					// print_r($comments);
 
-<<<<<<< HEAD
 					$i = $this->readPhpComment($comments[0]);
-=======
-					$i = $_SESSION['nexus']['update']["$x[class].php"] = $this->readPhpComment($comments[0]);
->>>>>>> 6a1dfa1405630156c55e8e90da4ae9dd004030f4
- 
+  
+					
 					$jig = array(
 						'author'  => '',
 						'class'   => $x['class'],
@@ -214,11 +247,9 @@
 
 					$info["$x[class].php"] = array_merge($jig,$i);
 
-<<<<<<< HEAD
 					$_SESSION['nexus']['update']["$x[class].php"] = $info["$x[class].php"];
-
-=======
->>>>>>> 6a1dfa1405630156c55e8e90da4ae9dd004030f4
+ 
+					
 				}
 
 			}
@@ -231,26 +262,43 @@
 
 		 
 
-		function git($update=null)
+		function git($update=null,$sub=null)
 		{
-			 
-			if($update){
-<<<<<<< HEAD
-				$this->set('update',$update);
+	 		$this->set('update',$update); 
+			$sys = array(
+				'backdoor' => $this->_CFG['dir']['backdoor'],
+				'suite' => $this->_CFG['suite'] 
+			);
+			switch ($update) {
+			 	case 'submodule':
+			 		$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; HOME='' git submodule add https://github.com/superdomx/$sub ./$sub)2>&1");
+		 		break;
+			 	
+			 	default:
+			 		$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; HOME='' git pull origin master -f)2>&1");		 
+		 		break;
+			 } 
 
-=======
->>>>>>> 6a1dfa1405630156c55e8e90da4ae9dd004030f4
-				$sys = array(
-					'backdoor' => $this->_CFG['dir']['backdoor'],
-					'suite' => $this->_CFG['suite'] 
-				);
-
-				$this->set('system',$this->mysys("cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; git pull origin master -f",true));
-				 
-			}
+			$this->set('system',$s); 
+			
 		}
 
+
+		function pullShell()
+		{
+			if($this->Key['is']['admin']){ 
+				$s = system("(git stash; HOME='' git pull origin master -f; )2>&1");
+				 
+				$this->set('system',$s); 
+			}
+			
+		}
+
+
 		function _OLD_index(){
+=======
+		function index(){
+>>>>>>> nightly
 			//$xphp = $this->getXTends();
 			
 			function mkParents($dir,$directory){

@@ -13,6 +13,7 @@
  * @delta true
  * @license
  */
+	define('CORE_DOMAIN','http://Xengine.com');
 	set_time_limit(360);
 	class xNexus extends Xengine{
 

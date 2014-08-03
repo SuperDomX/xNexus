@@ -112,6 +112,10 @@
  
                         </header>
                         <div class="row">
+                            <p>
+                                Welcome to the "neXus" Door neighbor!
+                            </p>  
+                            <h3>SuperDom stays Up-to-date, with the latest Blueprints Blox, Xtras & Costumez.</h3>
                             
                         
                         
