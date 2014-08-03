@@ -81,7 +81,7 @@
 		}
 
 		function install(){
-			$this->index();
+			// $this->index();
 		}
 
 		function syncDb(){

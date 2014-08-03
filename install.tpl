@@ -9,15 +9,123 @@
                         <!-- <a data-widgster="load" title="I am spinning!" href="#"><i class="glyphicon glyphicon-refresh"></i></a> -->
                         <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                     </div>
+
+
+                    <div id="carousel-example-generic" class="carousel slide">
+                        <ol class="carousel-indicators outer">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li> 
+                            {foreach $admin_menu as $key => $item}
+                                {if $key} 
+                                    <li data-target="#key" data-slide-to="{counter start=1}"></li>    
+                                {/if}
+                            {/foreach} 
+                        </ol>
+                        <div class="carousel-inner text-align-center">
+                            <div class="item active" id="0">
+                                <h1><i class="fa fa-4x fa-space-shuttle "></i><br/>Hello {$user.username|ucfirst}  </h1>
+                                <p class="lead">
+                                   
+                                Welcome to your Super <b>Spacylecious</b>  Dashboard!
+                                   
+                                </p>
+                                <p class="text-align-center">
+                                    <!-- <a class="btn btn-success btn-lg " data-widgster="fullscreen"> -->
+                                    <a class="btn btn-info btn-lg " href="/{$toBackDoor}/login/profile">
+                                        <i class="fa fa-user"></i> {$user.username}
+                                    </a>
+                                    <a class="btn btn-info btn-lg " data-widgster="restore">
+                                        Watchtower
+                                    </a>
+                                </p>
+                            </div>
+
+                            {foreach $admin_menu as $key => $item}
+                                {if $key} 
+                                    <div class="item " id="{$key}">
+                                        <h1><i class="fa fa-{$key} fa-4x"></i><br/>{$item.area|ucfirst}</h1>
+                                        <p class="lead">
+                                            {$item.desc|ucfirst} 
+                                        </p> 
+                                        <p class="text-align-center">
+                                            
+                                                 
+                                             {foreach $xtras as $x => $xtra}
+                                                {if $xtra.icon && $key == $xtra.see}
+                                                    <!-- <img src="{$ICON.48}{$xtra.icon}" desc="{$xtra.desc}" link="{$xtra.link}" file="{$x}" icon="{$xtra.icon}" title="{$xtra.name}">  -->
+                                                    
+                                                    <a  href="/x/{$xtra.link}" title="{$xtra.desc}"  data-placement="top" data-original-title="{$xtra.desc}" class="btn btn-lg {if $xtra.alpha}btn-danger{elseif $xtra.beta}btn-warning{elseif $xtra.delta}btn-success{elseif $xtra.omega}btn-primary{else}btn-default" disabled="disabled{/if}" > 
+
+                                                       
+                                                        
+                                                        <i class="fa fa-{$xtra.mini}  "></i> {$xtra.name} 
+                                                    </a>
+                                                {/if}
+                                            {/foreach}
+                                             
+                                              
+                                        </p>
+                                    </div>
+                                   
+
+                                   <!--  <div align="center" id="map-{$key}" area="{$key}" style="overflow: hidden"> 
+                                        <img src="{$ICON.A}{$key}.png"  id="area-{$key}" height="128" width="128" >
+                                        {foreach $xtras as $x => $xtra}
+                                            {if $xtra.icon && $key == $xtra.see}
+                                            <img src="{$ICON.48}{$xtra.icon}" desc="{$xtra.desc}" link="{$xtra.link}" file="{$x}" icon="{$xtra.icon}" title="{$xtra.name}"> 
+                                            {/if}
+                                        {/foreach}
+                                        <p>{$item.area|ucfirst}</p>
+                                        <span class="transparent-black-25" style="display: none; height: 48px; padding : 5px;">
+                                            <img align="absmiddle" style="margin: 5px;" />
+                                            <h1 style="float: left; margin-left: 60px;"></h1>
+                                            <h3 style=" "></h3>
+                                        </span> 
+                                    </div>   -->
+                                {/if}
+                            {/foreach}
+
+                           <!--  <div class="item">
+                                <h1>The SuperDom neXus</h1>
+                                <p class="lead">
+                                    Or as we like to call it... <em>SuperDomX</em>! 
+                                </p> 
+                                <p class="text-align-center">
+                                    <a class="btn btn-info btn-lg ">
+                                       Connect to the <em>neXus</em>! &nbsp;
+                                        <i class="fa fa-globe"></i>
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="item">
+                                <h1>Blox & Costumez</h1>
+                                <p class="lead">
+                                    Check our the plethora of contributions from other <em>Users</em>! 
+                                </p> 
+                                <p class="text-align-center">
+                                    <a class="btn btn-danger btn-lg ">
+                                       Get More <em>Pieces</em>! &nbsp;
+                                        <i class="fa fa-puzzle-piece"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div> -->
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+
                     <h1>    
-                        <i class="fa fa-ge  "></i> <em>NeXuS</em>
+                        <i class="fa fa-ge  "></i> <em>NeXus Installation</em>
                         <label class="label label-danger pull-right">
                         
                             Last Communication: 
                         </label>  
                     </h1>
                     <p class="lead">
-                       Welcome to the Nexus. Keep your domain up-to-date with the latest & greast software and content.<br/>
+                       to the NeXus way of Install Software<br/>
  
                         <a href="/{$toBackDoor}/{$Xtra}/{$method}/master" class="btn btn-success btn-lg" >
                            Download Master List
@@ -26,10 +134,6 @@
 
                         <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger btn-lg" >
                            Update Shell
-                        </a>
-
-                        <a href="/{$toBackDoor}/{$Xtra}/install" class="btn btn-info btn-lg" >
-                           Install New Software
                         </a>
 <!-- 
                         <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger btn-lg" >
@@ -124,11 +228,6 @@
         </section>
     </div> 
 
-    
-    {include file="~widgets/col.tpl" col=3 method="blox" title="Blox"}
-    {include file="~widgets/col.tpl" col=3 method="blueprints" title="Blueprints"}
-    {include file="~widgets/col.tpl" col=3 method="costumez" title="Costumez"}
-    {include file="~widgets/col.tpl" col=3 method="xtras" title="Xtras"}    
- 
+     
 </div>
 <script type="text/javascript" src="/x/html/layout/watchtower/js/grid-live.js"> </script>
