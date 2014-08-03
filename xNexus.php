@@ -82,6 +82,7 @@
 
 		function install(){
 			// $this->index();
+			$this->xtras();
 		}
 
 		function syncDb(){
