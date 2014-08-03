@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.0.8
+ * @version v2.0.9
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -94,23 +94,25 @@
 					# code...
 			
 				break; 
-				
-				default:
-				# code... 
-					$remote = $this->_SET['CONFIG']['super_nexus'].'/'.$this->_SET['action'].'/'.$this->_SET['method'].'/.json';
-					$json = file_get_contents($remote);
-					$json = json_decode($json, true);
 
-					$this->set('remote_xtras', $json['data']['master_xtras'] ); 
-
+				case 'xtras': 
 					return array(
 						'data' => array(
 							'master_xtras' => $this->getXtras() 
 						)
 					);
 				break;
+				
+				default:
+				# code... 
+					$remote = $this->_SET['CONFIG']['super_nexus'].'/'.$this->_SET['action'].'/'.$this->_SET['method'].'/xtras/.json';
+					$json = file_get_contents($remote);
+					$json = json_decode($json, true); 
+					$this->set('remote_xtras', $json['data']['master_xtras'] );  
+				break;
 			}
 		}
+
 
 
 		function syncDb(){
