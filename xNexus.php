@@ -29,7 +29,12 @@
 
 		function autoRun()
 		{
-			
+			$rc = new ReflectionClass("Xengine");
+			$doc = $rc->getDocComment();
+			$info = $this->readPhpComment($doc);
+			return array(
+				'version' => $info['version']
+			);
 		}
 
 		/*function autoRun($sDom){
@@ -263,6 +268,9 @@
 
 		function git($update=null,$sub=null)
 		{
+			if($_SERVER['HTTP_HOST'] == 'localhost'){
+				exit;
+			}
 	 		$this->set('update',$update); 
 			$sys = array(
 				'backdoor' => $this->_CFG['dir']['backdoor'],
@@ -287,6 +295,7 @@
 		{
 			if($this->Key['is']['admin']){ 
 				$s = system("(git stash; HOME='' git pull origin master -f; )2>&1");
+				$s .= system("(cd x/Hydrogen; HOME='' git submodule update; )2>&1");
 				 
 				$this->set('system',$s); 
 			}
