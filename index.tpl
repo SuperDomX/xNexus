@@ -27,6 +27,10 @@
                         <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger btn-lg" >
                            Update Shell
                         </a>
+
+                        <a href="/{$toBackDoor}/{$Xtra}/install" class="btn btn-info btn-lg" >
+                           Install New Software
+                        </a>
 <!-- 
                         <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger btn-lg" >
                            Update Suite
@@ -38,7 +42,7 @@
                     </p> 
                     <p class="text-align-right">
                         <a class="btn btn-primary btn-lg" data-widgster="fullscreen">
-                           C<i class="fa fa-cog fa-spin-reverse"></i>re  C<i class="fa fa-crosshairs fa-spin"></i>ncept&nbsp; 
+                             C<i class="fa fa-crosshairs"></i>nnect C<i class="fa fa-cog"></i>re
                             
                         </a>
 
@@ -67,8 +71,8 @@
                         </header>
                         <div class="row">
                             <p>
-                                <h2>And to the Internet, Digitally!</h2>
-                               
+                                <h2>And to the Internet, Digitally!  <input type="text"/></h2>
+                              
                             </p>  
                             <h3>Welcome to the Super Neighborhood. Where the latest Blueprints Blox, Xtras & Costumez are "neXus" Door.</h3>
                             
