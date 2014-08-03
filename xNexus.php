@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.0.6
+ * @version v2.0.7
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -86,14 +86,27 @@
 
 		function install($what=null){
 			// $this->index();
+
+
+
 			switch ($what) {
 				case 'blox':
 					# code...
 			
 				break;
+				case 'xtra':
+					# code...
+					
+				break;
 				
 				default:
 				# code... 
+					$remote = $this->_SET['CONFIG']['super_nexus'].'/'.$this->_SET['action'].'/'.$this->_SET['method'].'/.json';
+					$json = file_get_contents($remote);
+					$json = json_decode($json, true);
+
+					$this->set('remote_xtras', $json['data']['master_xtras'] ); 
+
 					return array(
 						'data' => array(
 							'master_xtras' => $this->xtras() 
@@ -250,18 +263,25 @@
 
 		 
 
-		function git($update=null)
+		function git($update=null,$sub=null)
 		{
-			 
-			$this->set('update',$update); 
-				$sys = array(
-					'backdoor' => $this->_CFG['dir']['backdoor'],
-					'suite' => $this->_CFG['suite'] 
-				);
+	 		$this->set('update',$update); 
+			$sys = array(
+				'backdoor' => $this->_CFG['dir']['backdoor'],
+				'suite' => $this->_CFG['suite'] 
+			);
+			switch ($update) {
+			 	case 'submodule':
+			 		$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; HOME='' git submodule add https://github.com/superdomx/$sub -f)2>&1");
+		 		break;
+			 	
+			 	default:
+			 		$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; HOME='' git pull origin master -f)2>&1");		 
+		 		break;
+			 } 
 
-				$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; HOME='' git pull origin master -f)2>&1");
-				 
-				$this->set('system',$s); 
+			$this->set('system',$s); 
+			
 		}
 
 

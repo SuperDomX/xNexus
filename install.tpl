@@ -23,21 +23,31 @@
                 </small></h1>
                 
             </section>
-        </div>
-        {foreach $xtras as $x => $xtra}
+        </div> 
+        {foreach $remote_xtras as $x => $xtra} 
         {if $xtra.icon && $key == $xtra.see}
-                <div class="col-md-4 {if $master_xtras["$x"].version == $xtra.version}hidden{/if}"> 
+                <div class="col-md-6 {if $xtras["$x"].version == $xtra.version}hidden{/if}"> 
                    <section class="widget text-align-center">
-                        <h1><i class="fa fa-{$xtra.mini} fa-4x"></i><br/> {$xtra.name} </h1>
+                        <h1><i class="fa fa-{$xtra.mini} fa-4x"></i> </h1>
+                        <h1> {$xtra.name} </h1> 
+                        <p>{$xtra.desc}</p>
+                        
+                        
                     <!-- <img src="{$ICON.48}{$xtra.icon}" desc="{$xtra.desc}" link="{$xtra.link}" file="{$x}" icon="{$xtra.icon}" title="{$xtra.name}">  -->
                          <!-- {$xtra.desc} -->
-                         <br/>
-                        <a  href="/x/{$xtra.link}" title="{$xtra.desc}"  data-placement="top" data-original-title="{$xtra.desc}" class="btn btn-lg {if $xtra.alpha}btn-danger{elseif $xtra.beta}btn-warning{elseif $xtra.delta}btn-success{elseif $xtra.omega}btn-primary{else}btn-default" disabled="disabled{/if}" >  
-                            
-                            <i class="fa fa-cloud-download"></i> Install
-                            
-                          
-                        </a>
+                         {if $xtra.price}
+                            <h1 style="position: absolute; top: 0; left; 5px; color: rgba(0,0,0,0.25);font-size: 333%">
+                                <i class="fa fa-money"></i> {$xtra.price} 
+                            </h1>
+                        
+                        {/if}
+                        <a  href="/{$toBackDoor}/{$Xtra}/git/submodule/{$xtra.class}" title="{$xtra.desc}" class="btn btn-info btn-lg"  data-placement="top" data-original-title="{$xtra.desc}" >
+                            <i class="fa fa-cloud-download"></i> Download</a>
+                         <hr/>
+                         <span class="label {if $xtras["$x"].alpha}label-danger{elseif $xtras["$x"].beta}label-warning{elseif $xtras["$x"].delta}label-success{elseif $xtras["$x"].omega}label-primary{else}label-default" disabled="disabled{/if}">
+                         <i class="fa fa-globe"></i> {$xtras["$x"].version}</span>
+                         vs. 
+                         <span class="label {if $xtra.alpha}label-danger{elseif $xtra.beta}label-warning{elseif $xtra.delta}label-success{elseif $xtra.omega}label-primary{else}label-default" disabled="disabled{/if}"><i class="fa fa-ge"></i> {$xtra.version}</span><br/>
                     </section>
                 </div>
             {/if}
