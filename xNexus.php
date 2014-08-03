@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.0.7
+ * @version v2.0.8
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -13,7 +13,7 @@
  * @alpha true
  * @license
  */
-	// set_time_limit(360);
+	set_time_limit(360);
 	class xNexus extends Xengine{
 
 		function dbSync(){
@@ -93,11 +93,7 @@
 				case 'blox':
 					# code...
 			
-				break;
-				case 'xtra':
-					# code...
-					
-				break;
+				break; 
 				
 				default:
 				# code... 
@@ -109,7 +105,7 @@
 
 					return array(
 						'data' => array(
-							'master_xtras' => $this->xtras() 
+							'master_xtras' => $this->getXtras() 
 						)
 					);
 				break;
