@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.0.9
+ * @version v2.0.9-rc
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
