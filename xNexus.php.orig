@@ -2,7 +2,11 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
+<<<<<<< HEAD
  * @version v2.1.0
+=======
+ * @version v2.0.9-rc
+>>>>>>> e43eaa36b0eaebb160365209a151cb1bbcb37ca1
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -13,6 +17,7 @@
  * @delta true
  * @license
  */
+	define('CORE_DOMAIN','http://Xengine.com');
 	set_time_limit(360);
 	class xNexus extends Xengine{
 
@@ -195,7 +200,6 @@
 			return $remote;
 		}
 
-<<<<<<< HEAD
 		function index($download=null){
 			if($download=='master')
 				unset($_SESSION['nexus']); 
@@ -296,9 +300,6 @@
 
 
 		function _OLD_index(){
-=======
-		function index(){
->>>>>>> nightly
 			//$xphp = $this->getXTends();
 			
 			function mkParents($dir,$directory){
