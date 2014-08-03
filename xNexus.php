@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.0.5
+ * @version v2.0.6
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -13,8 +13,7 @@
  * @alpha true
  * @license
  */
-	define('CORE_DOMAIN','http://Xengine.com');
-	set_time_limit(360);
+	// set_time_limit(360);
 	class xNexus extends Xengine{
 
 		function dbSync(){
@@ -26,6 +25,11 @@
 			$table['config']['config_value']['Type'] 		='varchar(255)';
 
 			return $table;
+		}
+
+		function autoRun()
+		{
+			
 		}
 
 		/*function autoRun($sDom){
@@ -80,10 +84,25 @@
 			return file_get_contents( CORE_DOMAIN."/update/$function/?returnJson&key=$key");
 		}
 
-		function install(){
+		function install($what=null){
 			// $this->index();
-			$this->xtras();
+			switch ($what) {
+				case 'blox':
+					# code...
+			
+				break;
+				
+				default:
+				# code... 
+					return array(
+						'data' => array(
+							'master_xtras' => $this->xtras() 
+						)
+					);
+				break;
+			}
 		}
+
 
 		function syncDb(){
 			$this->syncDbTables();
@@ -167,11 +186,7 @@
 
 		function index($download=null){
 			if($download=='master')
-				unset($_SESSION['nexus']);
-			// var_dump($info);
-
-			// // var_dump($t);
-			// exit;
+				unset($_SESSION['nexus']); 
 		}
 
 		// Out puts the list of Xtra's & The Comparing version file.
