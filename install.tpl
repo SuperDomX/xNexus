@@ -26,7 +26,7 @@
         </div> 
         {foreach $remote_xtras as $x => $xtra} 
         {if $xtra.icon && $key == $xtra.see}
-                <div class="col-md-6 {if $xtras["$x"].version == $xtra.version}{/if}"> 
+                <div class="col-md-6 {if $xtras["$x"].version == $xtra.version}hidden{/if}"> 
                    <section class="widget text-align-center">
                         <h1><i class="fa fa-{$xtra.mini} fa-5x"></i> </h1>
                         <h1> {$xtra.name} </h1> 
@@ -52,7 +52,7 @@
                             data-image="/bin/images/icons/48x48/{$xtra.icon}">
                           </script>
                         </form>
-                            {else}
+                            {elseif $xtras["$x"].version == ''}
 
                         <a  href="/{$toBackDoor}/{$Xtra}/git/submodule/{$xtra.class}" title="{$xtra.desc}" class="btn btn-info btn-lg"  data-placement="top" data-original-title="{$xtra.desc}" >
                             <i class="fa fa-cloud-download"></i> Download</a>
