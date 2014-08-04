@@ -32,17 +32,31 @@
                         <h1> {$xtra.name} </h1> 
                         <p>{$xtra.desc}</p>
                         
-                        
+                       
                     <!-- <img src="{$ICON.48}{$xtra.icon}" desc="{$xtra.desc}" link="{$xtra.link}" file="{$x}" icon="{$xtra.icon}" title="{$xtra.name}">  -->
                          <!-- {$xtra.desc} -->
-                         {if $xtra.price}
+                         {if $xtra.price}  
                             <h1 style="position: absolute; top: 0; left; 5px; color: rgba(0,0,0,0.25);font-size: 333%">
                                 <i class="fa fa-money"></i> {$xtra.price} 
                             </h1>
-                        
-                        {/if}
+                            <form action="/{$toBackDoor}/{$Xtra}/git/submodule/{$xtra.class}/" method="POST">
+                            <input name="x[price]" type="hidden" value="{$xtra.price|substr:1}00" />
+                            <input name="x[class]" type="hidden" value="{$xtra.class}" />
+                          <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_qBfAk1rBo6lXsdTHFWYU9GGU"
+                            data-amount='{$xtra.price|substr:1}00'
+                            data-name="{$xtra.name} {$xtra.price|trim}"
+                            data-email="{$user.email}"
+                            data-description="{$xtra.desc}"
+                            data-image="/bin/images/icons/48x48/{$xtra.icon}">
+                          </script>
+                        </form>
+                            {elseif $xtras["$x"].version == ''}
+
                         <a  href="/{$toBackDoor}/{$Xtra}/git/submodule/{$xtra.class}" title="{$xtra.desc}" class="btn btn-info btn-lg"  data-placement="top" data-original-title="{$xtra.desc}" >
                             <i class="fa fa-cloud-download"></i> Download</a>
+                        {/if}
                          <hr/>
                          <span class="label {if $xtras["$x"].alpha}label-danger{elseif $xtras["$x"].beta}label-warning{elseif $xtras["$x"].delta}label-success{elseif $xtras["$x"].omega}label-primary{else}label-default" disabled="disabled{/if}">
                          <i class="fa fa-globe"></i> {$xtras["$x"].version}</span>

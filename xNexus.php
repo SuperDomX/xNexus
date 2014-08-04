@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.1.0
+ * @version v2.1.1
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -28,8 +28,67 @@
 		}
 
 		function autoRun()
-		{
-			
+		{ 
+			if(isset($_POST['stripeEmail'])){
+				$q = $this->q();
+				$this->lib('stripe/Stripe.php');
+
+				// Set your secret key: remember to change this to your live secret key in production
+				// See your keys here https://dashboard.stripe.com/account
+				Stripe::setApiKey("sk_test_bt7zhapzSWrEMpjEQpkGIW57");
+
+				// Get the credit card details submitted by the form
+				$token = $_POST['stripeToken'];
+
+				$cus = $q->Select('stripe_id','Users',array(
+					'id' =>$_SESSION['user']['id']
+				));
+
+				if( !empty($cus) && $cus[0]['stripe_id'] != '' ){
+					$cus_id = $cus[0]['stripe_id']; 
+				}else{
+					// Create a Customer
+					$customer = Stripe_Customer::create(array(
+					  "card" => $token,
+					  "description" => $_POST['stripeEmail'])
+					);
+					$cus_id = $customer->id;
+
+					$q->Update('Users',array(
+						'stripe_id' => $cus_id
+					),array(
+						'id' => $_SESSION['user']['id']
+					));
+				}
+ 
+				// Charge the Customer instead of the card
+				Stripe_Charge::create(array(
+				  "amount" => $_POST['x']['price'], # amount in cents, again
+				  "currency" => "usd",
+				  "customer" => $cus_id)
+				);
+
+				 
+				// Save the customer ID in your database so you can use it later
+				// saveStripeCustomerId($user, $customer->id);
+
+				// // Later...
+				// $customerId = getStripeCustomerId($user);
+
+				// Stripe_Charge::create(array(
+				//   "amount"   => 1500, # $15.00 this time
+				//   "currency" => "usd",
+				//   "customer" => $customerId)
+				// );
+
+			}
+
+			$rc = new ReflectionClass("Xengine");
+			$doc = $rc->getDocComment();
+			$info = $this->readPhpComment($doc);
+			return array(
+				'version' => $info['version']
+			);
 		}
 
 		/*function autoRun($sDom){
@@ -86,8 +145,6 @@
 
 		function install($what=null){
 			// $this->index();
-
-
 
 			switch ($what) {
 				case 'blox':
@@ -263,6 +320,9 @@
 
 		function git($update=null,$sub=null)
 		{
+			if($_SERVER['HTTP_HOST'] == 'localhost'){
+				exit;
+			}
 	 		$this->set('update',$update); 
 			$sys = array(
 				'backdoor' => $this->_CFG['dir']['backdoor'],
@@ -287,6 +347,7 @@
 		{
 			if($this->Key['is']['admin']){ 
 				$s = system("(git stash; HOME='' git pull origin master -f; )2>&1");
+				$s .= system("(cd x/Hydrogen; HOME='' git submodule update; )2>&1");
 				 
 				$this->set('system',$s); 
 			}
