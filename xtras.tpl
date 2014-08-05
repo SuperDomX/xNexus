@@ -43,6 +43,11 @@
             <!-- <i class="fa fa-chevron-right pull-right"></i> -->
             <i class="fa fa-check"></i> Everything Up-to-date
         </a>
+        
+        <a href="/{$toBackDoor}/{$Xtra}/git/pullShell/{$suite}" class="btn btn-primary btn-block">
+            <!-- <i class="fa fa-chevron-right pull-right"></i> -->
+            <i class="fa fa-cloud-download"></i> Sync w/ Latest Stable Release
+        </a>
     {/if}
     <script type="text/javascript">
         window.updateXtra = function  ($class) {
