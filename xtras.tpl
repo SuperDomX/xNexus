@@ -3,7 +3,6 @@
 
     {$outdated = false}
     {foreach $xtras as $xtra => $x}
-
         {assign var=master value=$master_xtras["$xtra"]}
         {if $master.version != $x.version}
             {$outdated = true}
@@ -11,7 +10,7 @@
     {/foreach}
 
 
-    {if !$outdated}
+    {if $outdated}
         <a href="./git/pullShell/{$suite}" class="btn btn-primary btn-block">
             <!-- <i class="fa fa-chevron-right pull-right"></i> -->
             <i class="fa fa-cloud-download"></i> Latest Stable Release
@@ -21,14 +20,12 @@
             <span class="badge">Master Version</span>
             
             <strong>Local Xtra</strong> - <span class="label  label-success "> VERSION</span> 
-        </a>
+        </a> 
+
+        {$outdated = false}
         {foreach $xtras as $xtra => $x} 
             {assign var=master value=$master_xtras["$xtra"]}
-            {if $master.version != $x.version}
-                {$outdated = true}
-            {/if}
-
-            <a href="/{$toBackDoor}/{$Xtra}/git/{$master.class}/" class="list-group-item  {if $outdated}hidden{/if} "> 
+            <a href="/{$toBackDoor}/{$Xtra}/git/{$master.class}/" class="list-group-item  {if  $master.version == $x.version}hidden{/if} "> 
             {if $master_xtras["$xtra"].version == $x.version}
                 <i class="fa fa-check text-success pull-right"></i> 
             {else}
