@@ -39,7 +39,7 @@
             </pre>
         {/foreach} 
     {else}
-        <a href="./git/pullShell/{$suite}" class="btn btn-success active disabled btn-block">
+        <a href="/{$toBackDoor}/{$Xtra}/git/pullShell/{$suite}" class="btn btn-success active disabled btn-block">
             <!-- <i class="fa fa-chevron-right pull-right"></i> -->
             <i class="fa fa-check"></i> Everything Up-to-date
         </a>
