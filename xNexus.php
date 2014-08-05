@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.1.6
+ * @version v2.1.6-00
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -322,7 +322,7 @@
 		{
 			unset($_SESSION['nexus']); 
 			if($_SERVER['HTTP_HOST'] == 'localhost'){
-				exit;
+				//exit;
 			}
 	 		$this->set('update',$update); 
 			$sys = array(
@@ -336,16 +336,18 @@
 		 		break;
 
 		 		case 'core':
-			 		$s = system("(cd $sys[backdoor]/; cd $sys[hydro]/; HOME='' git pull origin master -f; git submodule update)2>&1");
+			 		$s = system("(cd $sys[backdoor]/$sys[hydro]; HOME='' git pull origin master -f; git submodule update)2>&1");
 		 		break;
 			 	
 			 	default:
 			 		$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; HOME='' git pull origin master -f)2>&1");		 
 		 		break;
 			 } 
-
-			$this->set('system',$s); 
-			
+ 
+			return array(
+				'data' => $s,
+				'system' => $s
+			);
 		}
 
 
