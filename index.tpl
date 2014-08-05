@@ -12,15 +12,18 @@
                     <h1>    
                         <i class="fa fa-ge  "></i> <em>NeXuS</em>
 
+                        <span  data-widgster="restore"> 
                         <a class="btn btn-primary btn-lg " data-widgster="restore">
                             <i class="fa fa-backward"></i> Go Back  
                         </a>
-                         <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-warning btn-lg " data-widgster="restore">
+                         <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-warning btn-lg ">
                            <i class="fa fa-github"></i>
                         </a>
                         <a href="/{$toBackDoor}/{$Xtra}/git/core" class="btn btn-danger btn-lg " data-widgster="restore">
                            <i class="fa fa-ge"></i>
                         </a>
+                        </span>
+                        
                       <!--   <label class="label label-danger pull-right">
                         
                             Last Communication: 
