@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.1.9
+ * @version v2.2.0
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -336,16 +336,18 @@
 		 		break;
 
 		 		case 'core':
-			 		$exe = "cd $sys[backdoor]/$sys[hydro]; HOME='' git pull origin master -f; git submodule update";
-
+			 		$exe = "cd $sys[backdoor]/$sys[hydro]; HOME='' git pull origin master -f; git submodule init; git submodule update --rebase;  git submodule update";
 		 		break;
 			 	
 			 	default:
-			 		$exe = "cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; HOME='' git pull origin master -f)2>&1";		 
+			 		$exe = "cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; HOME='' git pull origin master -f";		 
 		 		break;
 			 } 
 
-			exec($exe,$s);
+			
+			if($this->Key['is']['admin']){  
+				exec("($exe)2>&1",$s);
+			}
  
 			return array(
 				'data' => $s,
@@ -358,10 +360,13 @@
 		{
 			if($this->Key['is']['admin']){  
 				$exe = "git stash; HOME='' git pull origin master -f; cd x/Hydrogen; git stash; HOME='' git pull origin master; git submodule update;";
-				 
 				exec("($exe)2>&1",$s);
 
 				$this->set('system',$s); 
+				return array(
+					'data' => $s,
+					'system' => $s
+				);
 			}
 			
 		}
