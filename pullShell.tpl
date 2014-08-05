@@ -6,7 +6,10 @@
 					
 					Updated Shell
 				</h1>
-				<h3><i class="fa fa-terminal fa-3x"></i> {$system}</h3>
+				<h1><i class="fa fa-terminal fa-3x pull-left"></i></h3>
+				{foreach $system as $l => $line}
+					<h4>{$line}</h4>
+				{/foreach}
 			</div>
 		</section>
 	</div>
