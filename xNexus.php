@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.1.5
+ * @version v2.1.6
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -336,7 +336,7 @@
 		 		break;
 
 		 		case 'core':
-			 		$s = system("(cd $sys[backdoor]/; cd $sys[hydro]/; HOME='' git pull origin master -f git submodule update)2>&1");
+			 		$s = system("(cd $sys[backdoor]/; cd $sys[hydro]/; HOME='' git pull origin master -f; git submodule update)2>&1");
 		 		break;
 			 	
 			 	default:
