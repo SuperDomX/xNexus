@@ -6,7 +6,7 @@
 					
 					Updated {$update}
 				</h1>
-				<h1><i class="fa fa-terminal fa-3x pull-left"></i></h3>
+				<h1><i class="fa fa-terminal fa-3x pull-right"></i></h3>
 				{foreach $system as $l => $line}
 					<h4>{$line}</h4>
 				{/foreach}

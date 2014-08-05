@@ -19,9 +19,9 @@
                          <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-warning btn-lg ">
                            <i class="fa fa-github"></i>
                         </a>
-                        <a href="/{$toBackDoor}/{$Xtra}/git/core" class="btn btn-danger btn-lg " data-widgster="restore">
+                       <!--  <a href="/{$toBackDoor}/{$Xtra}/git/core" class="btn btn-danger btn-lg " data-widgster="restore">
                            <i class="fa fa-ge"></i>
-                        </a>
+                        </a> -->
                         </span>
                         
                       <!--   <label class="label label-danger pull-right">
