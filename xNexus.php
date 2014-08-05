@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.1.3
+ * @version v2.1.4
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -320,17 +320,23 @@
 
 		function git($update=null,$sub=null)
 		{
+			unset($_SESSION['nexus']); 
 			if($_SERVER['HTTP_HOST'] == 'localhost'){
 				exit;
 			}
 	 		$this->set('update',$update); 
 			$sys = array(
 				'backdoor' => $this->_CFG['dir']['backdoor'],
+				'hydro' => $this->_CFG['dir']['hydro'],
 				'suite' => $this->_CFG['suite'] 
 			);
 			switch ($update) {
 			 	case 'submodule':
 			 		$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; HOME='' git submodule add https://github.com/superdomx/$sub ./$sub)2>&1");
+		 		break;
+
+		 		case 'core':
+			 		$s = system("(cd $sys[backdoor]/; cd $sys[hydro]/; HOME='' git pull origin master -f git submodule update)2>&1");
 		 		break;
 			 	
 			 	default:
