@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2(2.3)
+ * @version v2(2.4)
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -361,14 +361,14 @@
 			$sys = array(
 				'backdoor' => $this->_CFG['dir']['backdoor'],
 				'hydro' => $this->_CFG['dir']['hydro'],
-				'suite' => $suite
+				'suite' => $this->_CFG['suite']
 			);
 
 			if($this->Key['is']['admin']){  
 				if($suite)
 					$exe = "git stash; HOME='' git pull origin master -f; cd $sys[backdoor]/$sys[hydro]; git stash; HOME='' git pull origin master; git submodule update;";
 				else
-					$exe = "git stash; HOME='' git pull origin master -f; cd $sys[backdoor]/$suite; git stash; HOME='' git pull origin master; git submodule update;";
+					$exe = "git stash; HOME='' git pull origin master -f; cd $sys[backdoor]/$sys[suite]; git stash; HOME='' git pull origin master; git submodule update;";
 				
 				exec("($exe)2>&1",$s);
 
