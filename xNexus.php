@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.1.8
+ * @version v2.1.9
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -345,7 +345,7 @@
 		 		break;
 			 } 
 
-			exec("($exe)2>&1",$s);
+			exec($exe,$s);
  
 			return array(
 				'data' => $s,
