@@ -4,7 +4,7 @@
 			<div class="jumbotron">	
 				<h1>
 					
-					Updated {$update}
+					Updated Shell
 				</h1>
 				<h3><i class="fa fa-terminal fa-3x"></i> {$system}</h3>
 			</div>
