@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.2.0
+ * @version v2(2.1)
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -356,10 +356,20 @@
 		}
 
 
-		function pullShell()
+		function pullShell($suite=false)
 		{
+			$sys = array(
+				'backdoor' => $this->_CFG['dir']['backdoor'],
+				'hydro' => $this->_CFG['dir']['hydro'],
+				'suite' => $suite
+			);
+
 			if($this->Key['is']['admin']){  
-				$exe = "git stash; HOME='' git pull origin master -f; cd x/Hydrogen; git stash; HOME='' git pull origin master; git submodule update;";
+				if($suite)
+					$exe = "git stash; HOME='' git pull origin master -f; cd $sys[backdoor]/$sys[hydro]; git stash; HOME='' git pull origin master; git submodule update;";
+				else
+					$exe = "git stash; HOME='' git pull origin master -f; cd $sys[backdoor]/$suite; git stash; HOME='' git pull origin master; git submodule update;";
+				
 				exec("($exe)2>&1",$s);
 
 				$this->set('system',$s); 
