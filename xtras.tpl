@@ -11,7 +11,7 @@
 
 
     {if $outdated}
-        <a href="./git/pullShell/{$suite}" class="btn btn-primary btn-block">
+        <a href="/{$toBackDoor}/{$Xtra}/git/pullShell/{$suite}" class="btn btn-primary btn-block">
             <!-- <i class="fa fa-chevron-right pull-right"></i> -->
             <i class="fa fa-cloud-download"></i> Latest Stable Release
         </a>
@@ -39,7 +39,7 @@
             </pre>
         {/foreach} 
     {else}
-        <a href="./git/pullShell/{$suite}" class="btn btn-success active disabled btn-block">
+        <a href="#" class="btn btn-success active disabled btn-block">
             <!-- <i class="fa fa-chevron-right pull-right"></i> -->
             <i class="fa fa-check"></i> Everything Up-to-date
         </a>
