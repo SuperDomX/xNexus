@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2.1.6-00
+ * @version v2.1.7
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -332,17 +332,20 @@
 			);
 			switch ($update) {
 			 	case 'submodule':
-			 		$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; HOME='' git submodule add https://github.com/superdomx/$sub ./$sub)2>&1");
+			 		$exe = "cd $sys[backdoor]/; cd $sys[suite]/; HOME='' git submodule add https://github.com/superdomx/$sub ./$sub";
 		 		break;
 
 		 		case 'core':
-			 		$s = system("(cd $sys[backdoor]/$sys[hydro]; HOME='' git pull origin master -f; git submodule update)2>&1");
+			 		$exe = "cd $sys[backdoor]/$sys[hydro]; HOME='' git pull origin master -f; git submodule update";
+
 		 		break;
 			 	
 			 	default:
-			 		$s = system("(cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; HOME='' git pull origin master -f)2>&1");		 
+			 		$exe = "cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; HOME='' git pull origin master -f)2>&1";		 
 		 		break;
 			 } 
+
+			exec("($exe)2>&1",$s);
  
 			return array(
 				'data' => $s,
