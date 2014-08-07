@@ -35,8 +35,7 @@
 
                 <i class="fa fa-{$x.mini}"></i>&nbsp;
                {$x.class} | <span class="label {if $x.alpha}label-danger{elseif $x.beta}label-warning{elseif $x.delta}label-success{elseif $x.omega}label-primary{else}label-default{/if}">{$x.version}</span> 
-            </a>
-            </pre>
+            </a> 
         {/foreach} 
     {else}
         <a href="#" class="btn btn-success active disabled btn-block">
