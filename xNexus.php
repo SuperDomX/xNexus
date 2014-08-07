@@ -327,7 +327,7 @@
 	 		$this->set('update',$update); 
 			$sys = array(
 				'backdoor' => $this->_CFG['dir']['backdoor'],
-				'hydro' => $this->_CFG['dir']['hydro'],
+				'hydro' => $this->_CFG['dir']['libs'],
 				'suite' => $this->_CFG['suite'] 
 			);
 			switch ($update) {
@@ -360,13 +360,13 @@
 		{
 			$sys = array(
 				'backdoor' => $this->_CFG['dir']['backdoor'],
-				'hydro' => $this->_CFG['dir']['hydro'],
+				'hydro' => $this->_CFG['dir']['libs'],
 				'suite' => $this->_CFG['suite']
 			);
 
 			if($this->Key['is']['admin']){  
 				if($suite != $sys['suite'])
-					$exe = "git stash; HOME='' git pull origin master -f; cd $sys[backdoor]/$sys[hydro]; git stash; HOME='' git pull origin master; git submodule update; ./gitpull.sh;";
+					$exe = "git stash; HOME='' git pull origin master -f; cd ".LIBS_DIR."; git stash; HOME='' git pull origin master; git submodule update; ./gitpull.sh;";
 				else
 					$exe = "git stash; HOME='' git pull origin master -f; cd $sys[backdoor]/$sys[suite]; git stash; HOME='' git pull origin master; git submodule update;";
 				
