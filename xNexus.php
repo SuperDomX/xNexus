@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2(3.3)
+ * @version v2(3.4)
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -368,7 +368,11 @@
 				$dir = ($suite != $sys['suite']) ? LIBS_DIR : XPHP_DIR;
 
 				$exe = "git stash; HOME='' git pull origin master -f; cd $dir; git stash; HOME='' git pull origin master; git submodule update;";
-				
+
+				if($dir == LIBS_DIR){
+					$exe .= "./gitpull.sh";
+				}
+ 
 				exec("($exe)2>&1",$s);
  
 				return array(
