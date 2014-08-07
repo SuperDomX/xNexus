@@ -2,15 +2,15 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2(2.9)
+ * @version v2(3.0)
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
  * @see  support
  * @link nexus
- * @release delta
+ * @release omega
  * @todo
- * @delta true
+ * @omega true
  * @license
  */
 	set_time_limit(360);
