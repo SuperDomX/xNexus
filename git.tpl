@@ -12,8 +12,9 @@
 				<a href="/{$toBackDoor}/{$Xtra}/" class="btn btn-success">
 					<i class="fa fa-ge"></i> Nexus
 				</a>
-				<a href="/{$toBackDoor}/{$update|strtolower|substr:1}/"  class="btn btn-info">
-					<i class="fa fa-{$xtras["$update.php"].mini}"></i> {$xtras["$update.php"].name}					
+				{$x = $xtras["$update.php"]} 
+				<a href="/{$toBackDoor}/{$.link}"  class="btn btn-info">
+					<i class="fa fa-{$x.mini}"></i> {$x.name}					
 				</a> 
 			</div>
 		</section>
