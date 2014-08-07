@@ -13,7 +13,7 @@
 					<i class="fa fa-ge"></i> Nexus
 				</a>
 				{$x = $xtras["$update.php"]} 
-				<a href="/{$toBackDoor}/{$.link}"  class="btn btn-info">
+				<a href="/{$toBackDoor}/{$x.link}"  class="btn btn-info">
 					<i class="fa fa-{$x.mini}"></i> {$x.name}					
 				</a> 
 			</div>
