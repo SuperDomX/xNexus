@@ -10,11 +10,11 @@
 					<h4>{$line}</h4>
 				{/foreach}
 				<a href="/{$toBackDoor}/{$Xtra}/" class="btn btn-success">
-					<i class="fa fa-backward"></i> Go Back
+					<i class="fa fa-ge"></i> Nexus
 				</a>
-				<a href="/{$toBackDoor}/{$Xtra}/">
-					<i class="fa fa-"></i>
-				</a>
+				<a href="/{$toBackDoor}/{$update|strtolower|substr:1}/"  class="btn btn-info">
+					<i class="fa fa-{$xtras["$update.php"].mini}"></i> {$xtras["$update.php"].name}					
+				</a> 
 			</div>
 		</section>
 	</div>
