@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2(3.1)
+ * @version v2(3.2)
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -366,7 +366,7 @@
 
 			if($this->Key['is']['admin']){  
 				if($suite != $sys['suite'])
-					$exe = "git stash; HOME='' git pull origin master -f; cd $sys[backdoor]/$sys[hydro]; git stash; HOME='' git pull origin master; ./gitpull.sh;";
+					$exe = "git stash; HOME='' git pull origin master -f; cd $sys[backdoor]/$sys[hydro]; git stash; HOME='' git pull origin master; git submodule update; ./gitpull.sh;";
 				else
 					$exe = "git stash; HOME='' git pull origin master -f; cd $sys[backdoor]/$sys[suite]; git stash; HOME='' git pull origin master; git submodule update;";
 				
