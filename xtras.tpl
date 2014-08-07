@@ -15,13 +15,13 @@
             <!-- <i class="fa fa-chevron-right pull-right"></i> -->
             <i class="fa fa-cloud-download"></i> Latest Stable Release
         </a>
-        <a href="#" class="list-group-item">
-            <!-- <i class="fa fa-chevron-right pull-right"></i> -->
+<!--         <a href="#" class="list-group-item">
+            <i class="fa fa-chevron-right pull-right"></i>
             <span class="badge">Master Version</span>
             
             <strong>Local Xtra</strong> - <span class="label  label-success "> VERSION</span> 
         </a> 
-
+ -->
         {$outdated = false}
         {foreach $xtras as $xtra => $x} 
             {assign var=master value=$master_xtras["$xtra"]}
