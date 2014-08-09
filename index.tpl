@@ -192,10 +192,7 @@
     </div> 
 
     
-    {include file="~widgets/col.tpl" col=3 method="blox" title="Blox"}
-    {include file="~widgets/col.tpl" col=3 method="blueprints" title="Blueprints"}
-    {include file="~widgets/col.tpl" col=3 method="costumez" title="Costumez"}
-    {include file="~widgets/col.tpl" col=3 method="xtras" title="Xtras"}    
+    {include file="~widgets/col.tpl" col=12 method="xtras" title="Xtras"}    
  
 </div>
 <script type="text/javascript" src="/x/html/layout/watchtower/js/grid-live.js"> </script>
