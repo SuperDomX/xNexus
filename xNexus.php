@@ -2,7 +2,7 @@
 /**
  * @name neXus
  * @desc The Central Hub where All Super Domains Connect & Communicate
- * @version v2(3.5)
+ * @version v2(3.6)
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire
@@ -286,7 +286,7 @@
 		 		break;
 			 	
 			 	default:
-			 		$exe = "cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; git stash; HOME='' git pull origin master -f";		 
+			 		$exe = "cd $sys[backdoor]/; cd $sys[suite]/; cd $update/; git stash; HOME='' git pull origin master -f; git submodule init; git submodule update --rebase;  git submodule update";		 
 		 		break;
 			 } 
 
