@@ -313,7 +313,7 @@
 			if($this->Key['is']['admin']){  
 				$dir = ($suite != $sys['suite']) ? LIBS_DIR : XPHP_DIR;
 
-				$exe = "git stash; HOME='' git pull origin master -f; cd $dir; git stash; HOME='' git pull origin master; git submodule update;";
+				$exe = "git stash; HOME='' git pull origin master -f; cd $dir; git stash; HOME='' git pull origin master; git submodule init; git submodule update;";
 
 				if($dir == LIBS_DIR){
 					$exe .= "./gitpull.sh";
