@@ -1,6 +1,6 @@
 <?php
 /**
- * @name neXus
+ * @name The Nexus
  * @desc The Central Hub where All Super Domains Connect & Communicate
  * @version v2(3.6)
  * @author i@xtiv.net
