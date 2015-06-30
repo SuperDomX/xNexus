@@ -10,7 +10,7 @@
                         <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                     </div>
                     <h1>    
-                        <i class="fa fa-ge  "></i> <em>NeXuS</em>
+                        <i class="fa fa-ge  fa-spin"></i> <em>The Nexus</em>
 
                         <span  data-widgster="restore"> 
                         <a class="btn btn-primary btn-lg " data-widgster="restore">
@@ -30,7 +30,7 @@
                         </label>  --> 
                     </h1>
                     <p class="lead">
-                       Welcome to the Nexus. Keep your domain up-to-date with the latest & greast software and content.<br/>
+                       The Nexus powers your Super Domain by constantly keeping it secure and up-to-date with the latest software.<br/>
                        
                         
 
@@ -96,16 +96,18 @@
                     <p class="text-align-right">
                         <a href="/{$toBackDoor}/{$Xtra}/{$method}/master" class="btn btn-success " >
                           <i class="fa fa-refresh"></i>
-                            
                         </a>
-
-                        
 
                         <a href="/{$toBackDoor}/{$Xtra}/install" class="btn btn-info " >
                            <i class="fa fa-star"></i>
                         </a>
+
                         <a class="btn btn-primary" data-widgster="fullscreen">
                            <i class="fa fa-question"></i> 
+                        </a>
+
+                        <a href="/{$toBackDoor}/{$Xtra}/{$method}/master" class="btn btn-transparent " >
+                          <i class="fa fa-columns"></i> Templates
                         </a>
 
 

@@ -1,12 +1,12 @@
 <?php
 /**
  * @name The Nexus
- * @desc The Central Hub where All Super Domains Connect & Communicate
+ * @desc The Central Hub where  Super Domains Connect & Communicate
  * @version v2(3.6)
  * @author i@xtiv.net
  * @icon health.png
- * @mini empire
- * @see  support
+ * @mini empire fa-spin
+ * @see  construct
  * @link nexus
  * @release omega
  * @todo
