@@ -6,7 +6,7 @@
  * @author i@xtiv.net
  * @icon health.png
  * @mini empire fa-spin
- * @see  domain 
+ * @see  navigate 
  * @link nexus
  * @release omega
  * @todo
