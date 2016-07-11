@@ -2,8 +2,8 @@
 /**
  * @name    The Nexus
  * @desc    The Central Hub where  Super Domains Connect & Communicate
- * @version v2(3.6)
- * @author  i@xtiv.net
+    * @version v0.1(160710)
+    * @author  @xopherdeep
  * @icon    health.png
  * @mini    empire fa-spin
  * @see     navigate
